@@ -3,105 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل الثوابت الوزارية | @raslen_mods</title>
+    <title>ZNA للوزاريات | @raslen_mods</title>
     <style>
-        /* نظام الألوان من صورتك */
         :root { 
-            --bg: #141b2d; 
-            --header-bg: #1f2940;
-            --card-bg: #1f2940;
+            --bg: #0f172a; 
+            --header-bg: #1e293b;
+            --card-bg: #1e293b;
             --accent-pink: #f06292;
-            --accent-blue: #38bdf8;
-            --green-btn: #2e7d32;
+            --zna-gold: #fbbf24;
             --text: #ffffff;
             --sub-text: #94a3b8;
         }
 
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
         
-        /* الهيدر */
-        header { background: var(--header-bg); padding: 40px 20px; text-align: center; border-bottom: 2px solid var(--accent-pink); }
-        header h1 { margin: 0; font-size: 1.8rem; }
-        header p { color: var(--sub-text); margin-top: 10px; font-size: 0.9rem; }
+        /* الهيدر الجديد باسم ZNA */
+        header { background: var(--header-bg); padding: 35px 20px; text-align: center; border-bottom: 4px solid var(--zna-gold); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .logo-zna { font-size: 2.5rem; font-weight: 900; color: var(--zna-gold); letter-spacing: 2px; margin: 0; }
+        header p { color: var(--sub-text); margin-top: 5px; font-size: 0.9rem; }
 
-        /* التنقل */
-        .nav-tabs { display: flex; overflow-x: auto; background: #1a2235; border-bottom: 1px solid #334155; }
-        .tab-btn { flex: 1; padding: 15px; border: none; background: none; color: var(--sub-text); cursor: pointer; font-weight: bold; min-width: 100px; transition: 0.3s; }
-        .tab-btn.active { color: var(--accent-pink); border-bottom: 3px solid var(--accent-pink); background: rgba(240, 98, 146, 0.05); }
+        .nav-tabs { display: flex; overflow-x: auto; background: #111827; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 100; }
+        .tab-btn { padding: 15px 25px; border: none; background: none; color: var(--sub-text); cursor: pointer; font-weight: bold; white-space: nowrap; transition: 0.3s; }
+        .tab-btn.active { color: var(--zna-gold); border-bottom: 3px solid var(--zna-gold); background: rgba(251, 191, 36, 0.1); }
 
-        .container { max-width: 600px; margin: 20px auto; padding: 10px; }
-        .subject-content { display: none; }
-        .subject-content.active { display: block; animation: slideUp 0.3s ease; }
+        .container { max-width: 650px; margin: 20px auto; padding: 15px; }
+        .subject-content { display: none; animation: fadeIn 0.4s ease; }
+        .subject-content.active { display: block; }
 
-        /* البطاقات مثل الصورة */
+        /* البطاقات بتصميم ZNA */
         .card { 
             background: var(--card-bg); 
             border-radius: 12px; 
-            padding: 20px; 
-            margin-bottom: 15px; 
+            padding: 18px; 
+            margin-bottom: 12px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            border-right: 4px solid var(--accent-pink); /* الخط الجانبي الوردي */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-right: 5px solid var(--accent-pink);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        .card .title { font-size: 1rem; font-weight: 500; }
-        .card .status { font-size: 0.85rem; color: var(--sub-text); }
+        .card .title { font-size: 0.95rem; font-weight: 600; color: #bae6fd; }
+        .card .status { font-size: 0.8rem; color: var(--zna-gold); font-weight: bold; }
 
-        /* زر تحميل PDF الأخضر */
+        .section-title { color: var(--zna-gold); margin: 25px 0 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
+        
         .pdf-btn { 
-            background: #38a169; 
+            background: #059669; 
             color: white; 
             text-align: center; 
-            padding: 15px; 
-            border-radius: 10px; 
+            padding: 16px; 
+            border-radius: 12px; 
             text-decoration: none; 
             display: block; 
-            margin: 25px 0; 
+            margin: 20px 0; 
             font-weight: bold;
-            box-shadow: 0 4px 12px rgba(56, 161, 105, 0.3);
         }
 
-        /* أرشيف الروابط الرسمي */
-        .archive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .archive-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
         .archive-link { 
-            background: #2a3447; 
-            color: var(--accent-blue); 
+            background: #1e293b; 
+            color: #f1f5f9; 
             padding: 12px; 
             border-radius: 8px; 
             text-decoration: none; 
             text-align: center; 
             font-size: 0.8rem; 
-            border: 1px solid #3d4963;
+            border: 1px solid #334155;
         }
+        .archive-link:hover { border-color: var(--zna-gold); color: var(--zna-gold); }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        footer { text-align: center; padding: 30px; color: #4b5563; font-size: 0.75rem; border-top: 1px solid #1f2940; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>🎓 دليل الثوابت الوزارية</h1>
-    <p>إعداد المبرمج Atter (@raslen_mods)</p>
+    <div class="logo-zna">ZNA</div>
+    <h1>منصة الثوابت الوزارية</h1>
+    <p>بإشراف المبرمج Atter (@raslen_mods)</p>
 </header>
 
 <div class="nav-tabs">
-    <button class="tab-btn active" onclick="openTab(event, 'phy')">الفيزياء</button>
+    <button class="tab-btn active" onclick="openTab(event, 'soc')">الاجتماعيات</button>
+    <button class="tab-btn" onclick="openTab(event, 'phy')">الفيزياء</button>
     <button class="tab-btn" onclick="openTab(event, 'chem')">الكيمياء</button>
     <button class="tab-btn" onclick="openTab(event, 'bio')">الأحياء</button>
-    <button class="tab-btn" onclick="openTab(event, 'soc')">الاجتماعيات</button>
+    <button class="tab-btn" onclick="openTab(event, 'math')">الرياضيات</button>
 </div>
 
 <div class="container">
     
-    <div id="phy" class="subject-content active">
-        <div class="card"><span class="title">قانون كولوم</span><span class="status">ثابت سنوياً</span></div>
-        <div class="card"><span class="title">المحولة الكهربائية</span><span class="status">مكرر</span></div>
+    <div id="phy" class="subject-content">
+        <div class="section-title">📌 ثوابت مادة الفيزياء</div>
+        <div class="card"><span class="title">قانون كولوم</span><span class="status">ثابت 100%</span></div>
+        <div class="card"><span class="title">ربط المقاومات</span><span class="status">مكرر وزاري</span></div>
+        <div class="card"><span class="title">المحولة الكهربائية</span><span class="status">ثابت سنوياً</span></div>
         
-        <a href="#" class="pdf-btn">🗂️ تحميل ملف الفيزياء PDF</a>
-
-        <div style="color:var(--accent-pink); margin-bottom:10px; font-weight:bold;">🔗 المصادر الرسمية (ملازمنا):</div>
+        <a href="#" class="pdf-btn">📥 تحميل ملخص ZNA للفيزياء</a>
+        
+        <div class="section-title">📂 أرشيف الأسئلة (ملازمنا)</div>
         <div class="archive-grid">
             <a href="https://mlazemna.com/tmcmall25/" class="archive-link">تمهيدي 2025</a>
             <a href="https://mlazemna.com/tacmall24/" class="archive-link">دور أول 2024</a>
@@ -110,27 +111,37 @@
         </div>
     </div>
 
-    <div id="chem" class="subject-content">
-        <div class="card"><span class="title">الترتيب الإلكتروني</span><span class="status">ثابت 10د</span></div>
-        <div class="card"><span class="title">كشوفات العناصر</span><span class="status">مكرر وزاري</span></div>
-        <a href="#" class="pdf-btn">🗂️ تحميل ملف الكيمياء PDF</a>
+    <div id="soc" class="subject-content active">
+        <div class="section-title">📌 ثوابت الاجتماعيات</div>
+        <div class="card"><span class="title">ثورة العشرين</span><span class="status">ثابت وزاري</span></div>
+        <div class="card"><span class="title">تعاريف الشخصيات</span><span class="status">مكرر جداً</span></div>
+        <div class="card"><span class="title">الموارد المائية</span><span class="status">ثابت 100%</span></div>
+        
+        <a href="#" class="pdf-btn">📥 تحميل ملخص ZNA للاجتماعيات</a>
+        
+        <div class="section-title">📂 أرشيف الأسئلة (ملازمنا)</div>
+        <div class="archive-grid">
+            <a href="https://mlazemna.com/tmcmall25/" class="archive-link">تمهيدي 2025</a>
+            <a href="https://mlazemna.com/tacmall24/" class="archive-link">دور أول 2024</a>
+        </div>
     </div>
 
 </div>
 
 <footer>
-    حقوق الطبع محفوظة Atter Projects - 2026
+    ZNA للوزاريات - جميع الحقوق محفوظة <br>
+    تطوير المبرمج Atter 2026
 </footer>
 
 <script>
     function openTab(evt, tabName) {
         var i, content, tabs;
         content = document.getElementsByClassName("subject-content");
-        for (i = 0; i < content.length; i++) content[i].className = content[i].className.replace(" active", "");
+        for (i = 0; i < content.length; i++) content[i].style.display = "none";
         tabs = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tabs.length; i++) tabs[i].className = tabs[i].className.replace(" active", "");
-        document.getElementById(tabName).className += " active";
-        evt.currentTarget.className += " active";
+        for (i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
     }
 </script>
 
