@@ -9,45 +9,47 @@
             --bg: #0f172a; 
             --header-bg: #1e293b;
             --card-bg: #1e293b;
-            --accent-pink: #f06292;
             --zna-gold: #fbbf24;
+            --accent-pink: #f06292;
             --text: #ffffff;
             --sub-text: #94a3b8;
         }
 
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
         
-        /* الهيدر الجديد باسم ZNA */
         header { background: var(--header-bg); padding: 35px 20px; text-align: center; border-bottom: 4px solid var(--zna-gold); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        .logo-zna { font-size: 2.5rem; font-weight: 900; color: var(--zna-gold); letter-spacing: 2px; margin: 0; }
-        header p { color: var(--sub-text); margin-top: 5px; font-size: 0.9rem; }
+        .logo-zna { font-size: 2.8rem; font-weight: 900; color: var(--zna-gold); letter-spacing: 2px; margin: 0; }
+        header h1 { font-size: 1.4rem; margin: 10px 0 5px; }
+        header p { color: var(--sub-text); font-size: 0.85rem; }
 
-        .nav-tabs { display: flex; overflow-x: auto; background: #111827; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 100; }
-        .tab-btn { padding: 15px 25px; border: none; background: none; color: var(--sub-text); cursor: pointer; font-weight: bold; white-space: nowrap; transition: 0.3s; }
+        /* شريط التنقل */
+        .nav-tabs { display: flex; overflow-x: auto; background: #111827; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 100; scrollbar-width: none; }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+        .tab-btn { padding: 15px 20px; border: none; background: none; color: var(--sub-text); cursor: pointer; font-weight: bold; white-space: nowrap; transition: 0.3s; }
         .tab-btn.active { color: var(--zna-gold); border-bottom: 3px solid var(--zna-gold); background: rgba(251, 191, 36, 0.1); }
 
-        .container { max-width: 650px; margin: 20px auto; padding: 15px; }
+        .container { max-width: 600px; margin: 20px auto; padding: 10px; }
         .subject-content { display: none; animation: fadeIn 0.4s ease; }
         .subject-content.active { display: block; }
 
-        /* البطاقات بتصميم ZNA */
+        /* تصميم البطاقات الموحد */
         .card { 
             background: var(--card-bg); 
             border-radius: 12px; 
-            padding: 18px; 
-            margin-bottom: 12px; 
+            padding: 20px; 
+            margin-bottom: 15px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
             border-right: 5px solid var(--accent-pink);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        .card .title { font-size: 0.95rem; font-weight: 600; color: #bae6fd; }
-        .card .status { font-size: 0.8rem; color: var(--zna-gold); font-weight: bold; }
+        .card .title { font-size: 1rem; font-weight: 600; color: #bae6fd; }
+        .card .status { font-size: 0.85rem; color: var(--zna-gold); font-weight: bold; }
 
-        .section-title { color: var(--zna-gold); margin: 25px 0 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
+        .section-header { color: var(--zna-gold); margin: 25px 0 15px; font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; gap: 8px; }
         
-        .pdf-btn { 
+        .pdf-link { 
             background: #059669; 
             color: white; 
             text-align: center; 
@@ -57,80 +59,79 @@
             display: block; 
             margin: 20px 0; 
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2);
         }
 
-        .archive-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
-        .archive-link { 
-            background: #1e293b; 
-            color: #f1f5f9; 
-            padding: 12px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            text-align: center; 
-            font-size: 0.8rem; 
-            border: 1px solid #334155;
-        }
-        .archive-link:hover { border-color: var(--zna-gold); color: var(--zna-gold); }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.8rem; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.8rem; border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-zna">ZNA</div>
-    <h1>منصة الثوابت الوزارية</h1>
-    <p>بإشراف المبرمج Atter (@raslen_mods)</p>
+    <h1>دليل الثوابت الوزارية</h1>
+    <p>إعداد المبرمج Atter (@raslen_mods)</p>
 </header>
 
 <div class="nav-tabs">
-    <button class="tab-btn active" onclick="openTab(event, 'soc')">الاجتماعيات</button>
-    <button class="tab-btn" onclick="openTab(event, 'phy')">الفيزياء</button>
+    <button class="tab-btn active" onclick="openTab(event, 'phy')">الفيزياء</button>
     <button class="tab-btn" onclick="openTab(event, 'chem')">الكيمياء</button>
     <button class="tab-btn" onclick="openTab(event, 'bio')">الأحياء</button>
     <button class="tab-btn" onclick="openTab(event, 'math')">الرياضيات</button>
+    <button class="tab-btn" onclick="openTab(event, 'soc')">الاجتماعيات</button>
+    <button class="tab-btn" onclick="openTab(event, 'ar')">اللغة العربية</button>
+    <button class="tab-btn" onclick="openTab(event, 'en')">الإنجليزية</button>
 </div>
 
 <div class="container">
     
-    <div id="phy" class="subject-content">
-        <div class="section-title">📌 ثوابت مادة الفيزياء</div>
-        <div class="card"><span class="title">قانون كولوم</span><span class="status">ثابت 100%</span></div>
-        <div class="card"><span class="title">ربط المقاومات</span><span class="status">مكرر وزاري</span></div>
-        <div class="card"><span class="title">المحولة الكهربائية</span><span class="status">ثابت سنوياً</span></div>
-        
-        <a href="#" class="pdf-btn">📥 تحميل ملخص ZNA للفيزياء</a>
-        
-        <div class="section-title">📂 أرشيف الأسئلة (ملازمنا)</div>
-        <div class="archive-grid">
-            <a href="https://mlazemna.com/tmcmall25/" class="archive-link">تمهيدي 2025</a>
-            <a href="https://mlazemna.com/tacmall24/" class="archive-link">دور أول 2024</a>
-            <a href="https://mlazemna.com/scmall24/" class="archive-link">دور ثاني 2024</a>
-            <a href="https://mlazemna.com/scmall243/" class="archive-link">دور ثالث 2024</a>
-        </div>
+    <div id="phy" class="subject-content active">
+        <div class="section-header">📌 الثوابت (دور 1+2+3)</div>
+        <div class="card"><span class="title">قانون كولوم</span><span class="status">ثابت سنوياً</span></div>
+        <div class="card"><span class="title">ربط المقاومات</span><span class="status">مكرر جداً</span></div>
+        <div class="card"><span class="title">كفاءة المحولة</span><span class="status">ثابت وزاري</span></div>
+        <div class="card"><span class="title">النشاطات (أورستد / الكشاف)</span><span class="status">مكرر 100%</span></div>
+        <a href="#" class="pdf-link">🗂️ تحميل ملخص ZNA للفيزياء</a>
     </div>
 
-    <div id="soc" class="subject-content active">
-        <div class="section-title">📌 ثوابت الاجتماعيات</div>
-        <div class="card"><span class="title">ثورة العشرين</span><span class="status">ثابت وزاري</span></div>
-        <div class="card"><span class="title">تعاريف الشخصيات</span><span class="status">مكرر جداً</span></div>
-        <div class="card"><span class="title">الموارد المائية</span><span class="status">ثابت 100%</span></div>
-        
-        <a href="#" class="pdf-btn">📥 تحميل ملخص ZNA للاجتماعيات</a>
-        
-        <div class="section-title">📂 أرشيف الأسئلة (ملازمنا)</div>
-        <div class="archive-grid">
-            <a href="https://mlazemna.com/tmcmall25/" class="archive-link">تمهيدي 2025</a>
-            <a href="https://mlazemna.com/tacmall24/" class="archive-link">دور أول 2024</a>
-        </div>
+    <div id="chem" class="subject-content">
+        <div class="section-header">📌 الثوابت (دور 1+2+3)</div>
+        <div class="card"><span class="title">الترتيب الإلكتروني (أوفباو)</span><span class="status">ثابت 12د</span></div>
+        <div class="card"><span class="title">الكشوفات (صوديوم / ألمنيوم)</span><span class="status">ثابت سنوياً</span></div>
+        <div class="card"><span class="title">التحضير المختبري (الغازات)</span><span class="status">مكرر جداً</span></div>
+        <a href="#" class="pdf-link">🗂️ تحميل ملخص ZNA للكيمياء</a>
+    </div>
+
+    <div id="bio" class="subject-content">
+        <div class="section-header">📌 الثوابت (دور 1+2+3)</div>
+        <div class="card"><span class="title">الرسومات (زغابة / عظم / نطفة)</span><span class="status">ثابت وزاري</span></div>
+        <div class="card"><span class="title">مقارنة الشهيق والزفير</span><span class="status">مكرر سنوياً</span></div>
+        <div class="card"><span class="title">وظائف ومواقع الأعضاء</span><span class="status">ثابت 100%</span></div>
+        <a href="#" class="pdf-link">🗂️ تحميل ملخص ZNA للأحياء</a>
+    </div>
+
+    <div id="math" class="subject-content">
+        <div class="section-header">📌 الثوابت (دور 1+2+3)</div>
+        <div class="card"><span class="title">المتتابعة الحسابية</span><span class="status">ثابت 10د</span></div>
+        <div class="card"><span class="title">حل المعادلات (الدستور)</span><span class="status">مكرر وزاري</span></div>
+        <div class="card"><span class="title">تبسيط المقادير الجبرية</span><span class="status">ثابت سنوياً</span></div>
+        <a href="#" class="pdf-link">🗂️ تحميل ملخص ZNA للرياضيات</a>
+    </div>
+
+    <div id="soc" class="subject-content">
+        <div class="section-header">📌 الثوابت (دور 1+2+3)</div>
+        <div class="card"><span class="title">ثورة العشرين (قادة ونتائج)</span><span class="status">ثابت 100%</span></div>
+        <div class="card"><span class="title">تعاريف الشخصيات التاريخية</span><span class="status">مكرر جداً</span></div>
+        <div class="card"><span class="title">الموارد المائية وجغرافيا العراق</span><span class="status">ثابت وزاري</span></div>
+        <a href="#" class="pdf-link">🗂️ تحميل ملخص ZNA للاجتماعيات</a>
     </div>
 
 </div>
 
 <footer>
-    ZNA للوزاريات - جميع الحقوق محفوظة <br>
-    تطوير المبرمج Atter 2026
+    حقوق الطبع محفوظة Atter Projects - 2026 <br>
+    ZNA للوزاريات | @raslen_mods
 </footer>
 
 <script>
