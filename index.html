@@ -1,25 +1,138 @@
-<div id="phy" class="subject-box">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الثوابت الوزارية | @raslen_mods</title>
+    <style>
+        /* نظام الألوان من صورتك */
+        :root { 
+            --bg: #141b2d; 
+            --header-bg: #1f2940;
+            --card-bg: #1f2940;
+            --accent-pink: #f06292;
+            --accent-blue: #38bdf8;
+            --green-btn: #2e7d32;
+            --text: #ffffff;
+            --sub-text: #94a3b8;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
+        
+        /* الهيدر */
+        header { background: var(--header-bg); padding: 40px 20px; text-align: center; border-bottom: 2px solid var(--accent-pink); }
+        header h1 { margin: 0; font-size: 1.8rem; }
+        header p { color: var(--sub-text); margin-top: 10px; font-size: 0.9rem; }
+
+        /* التنقل */
+        .nav-tabs { display: flex; overflow-x: auto; background: #1a2235; border-bottom: 1px solid #334155; }
+        .tab-btn { flex: 1; padding: 15px; border: none; background: none; color: var(--sub-text); cursor: pointer; font-weight: bold; min-width: 100px; transition: 0.3s; }
+        .tab-btn.active { color: var(--accent-pink); border-bottom: 3px solid var(--accent-pink); background: rgba(240, 98, 146, 0.05); }
+
+        .container { max-width: 600px; margin: 20px auto; padding: 10px; }
+        .subject-content { display: none; }
+        .subject-content.active { display: block; animation: slideUp 0.3s ease; }
+
+        /* البطاقات مثل الصورة */
+        .card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            margin-bottom: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-right: 4px solid var(--accent-pink); /* الخط الجانبي الوردي */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .card .title { font-size: 1rem; font-weight: 500; }
+        .card .status { font-size: 0.85rem; color: var(--sub-text); }
+
+        /* زر تحميل PDF الأخضر */
+        .pdf-btn { 
+            background: #38a169; 
+            color: white; 
+            text-align: center; 
+            padding: 15px; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            display: block; 
+            margin: 25px 0; 
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(56, 161, 105, 0.3);
+        }
+
+        /* أرشيف الروابط الرسمي */
+        .archive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .archive-link { 
+            background: #2a3447; 
+            color: var(--accent-blue); 
+            padding: 12px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            text-align: center; 
+            font-size: 0.8rem; 
+            border: 1px solid #3d4963;
+        }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        footer { text-align: center; padding: 30px; color: #4b5563; font-size: 0.75rem; border-top: 1px solid #1f2940; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎓 دليل الثوابت الوزارية</h1>
+    <p>إعداد المبرمج Atter (@raslen_mods)</p>
+</header>
+
+<div class="nav-tabs">
+    <button class="tab-btn active" onclick="openTab(event, 'phy')">الفيزياء</button>
+    <button class="tab-btn" onclick="openTab(event, 'chem')">الكيمياء</button>
+    <button class="tab-btn" onclick="openTab(event, 'bio')">الأحياء</button>
+    <button class="tab-btn" onclick="openTab(event, 'soc')">الاجتماعيات</button>
+</div>
+
+<div class="container">
     
-    <div style="background: rgba(251, 191, 36, 0.1); border: 1px solid var(--gold); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-        <h4 style="color: var(--gold); margin-top: 0;">🆕 أحدث الأسئلة: تمهيدي 2025</h4>
-        <a href="https://mlazemna.com/tmcmall25/" target="_blank" 
-           style="background: var(--gold); color: #000; padding: 8px 15px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">
-           عرض الأسئلة والأجوبة النموذجية
-        </a>
+    <div id="phy" class="subject-content active">
+        <div class="card"><span class="title">قانون كولوم</span><span class="status">ثابت سنوياً</span></div>
+        <div class="card"><span class="title">المحولة الكهربائية</span><span class="status">مكرر</span></div>
+        
+        <a href="#" class="pdf-btn">🗂️ تحميل ملف الفيزياء PDF</a>
+
+        <div style="color:var(--accent-pink); margin-bottom:10px; font-weight:bold;">🔗 المصادر الرسمية (ملازمنا):</div>
+        <div class="archive-grid">
+            <a href="https://mlazemna.com/tmcmall25/" class="archive-link">تمهيدي 2025</a>
+            <a href="https://mlazemna.com/tacmall24/" class="archive-link">دور أول 2024</a>
+            <a href="https://mlazemna.com/scmall24/" class="archive-link">دور ثاني 2024</a>
+            <a href="https://mlazemna.com/scmall243/" class="archive-link">دور ثالث 2024</a>
+        </div>
     </div>
 
-    <h4 style="color: var(--accent);">📁 أرشيف الأدوار السابقة:</h4>
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; background: var(--card); border-radius: 8px;">
-        <tr style="border-bottom: 1px solid #334155;">
-            <td style="padding: 10px;">2024 - دور أول</td>
-            <td style="text-align: center;"><a href="رابط_قديم_1" style="color: #ef4444;">📄 أسئلة</a></td>
-            <td style="text-align: center;"><a href="رابط_قديم_2" style="color: #10b981;">✅ أجوبة</a></td>
-        </tr>
-        <tr>
-            <td style="padding: 10px;">2023 - دور أول</td>
-            <td style="text-align: center;"><a href="رابط_قديم_3" style="color: #ef4444;">📄 أسئلة</a></td>
-            <td style="text-align: center;"><a href="رابط_قديم_4" style="color: #10b981;">✅ أجوبة</a></td>
-        </tr>
-    </table>
+    <div id="chem" class="subject-content">
+        <div class="card"><span class="title">الترتيب الإلكتروني</span><span class="status">ثابت 10د</span></div>
+        <div class="card"><span class="title">كشوفات العناصر</span><span class="status">مكرر وزاري</span></div>
+        <a href="#" class="pdf-btn">🗂️ تحميل ملف الكيمياء PDF</a>
+    </div>
 
 </div>
+
+<footer>
+    حقوق الطبع محفوظة Atter Projects - 2026
+</footer>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, content, tabs;
+        content = document.getElementsByClassName("subject-content");
+        for (i = 0; i < content.length; i++) content[i].className = content[i].className.replace(" active", "");
+        tabs = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabs.length; i++) tabs[i].className = tabs[i].className.replace(" active", "");
+        document.getElementById(tabName).className += " active";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
