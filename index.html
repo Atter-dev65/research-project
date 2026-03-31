@@ -1,64 +1,197 @@
-<div id="chem" class="subject-content active">
-    <div class="section-header">🔥 مرشحات الكيمياء (تحليل الملف الوزاري)</div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZNA للوزاريات | @raslen_mods</title>
+    <style>
+        :root { 
+            --bg: #0f172a; 
+            --header-bg: #1e293b;
+            --card-bg: #1e293b;
+            --zna-gold: #fbbf24;
+            --accent-pink: #f06292;
+            --text: #ffffff;
+            --sub-text: #94a3b8;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
+        header { background: var(--header-bg); padding: 35px 20px; text-align: center; border-bottom: 4px solid var(--zna-gold); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .logo-zna { font-size: 2.8rem; font-weight: 900; color: var(--zna-gold); letter-spacing: 2px; margin: 0; }
+        header p { color: var(--sub-text); margin-top: 5px; font-size: 0.9rem; }
+
+        .nav-tabs { display: flex; overflow-x: auto; background: #111827; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 100; scrollbar-width: none; }
+        .tab-btn { padding: 15px 25px; border: none; background: none; color: var(--sub-text); cursor: pointer; font-weight: bold; white-space: nowrap; transition: 0.3s; }
+        .tab-btn.active { color: var(--zna-gold); border-bottom: 3px solid var(--zna-gold); background: rgba(251, 191, 36, 0.1); }
+
+        .container { max-width: 600px; margin: 20px auto; padding: 15px; }
+        .subject-content { display: none; animation: fadeIn 0.4s ease; }
+        .subject-content.active { display: block; }
+
+        .section-title { color: var(--zna-gold); margin: 25px 0 15px; font-size: 1.1rem; font-weight: bold; border-right: 4px solid var(--zna-gold); padding-right: 10px; }
+        
+        .card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            margin-bottom: 12px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-right: 5px solid var(--accent-pink);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .card .title { font-size: 0.95rem; font-weight: 600; color: #bae6fd; }
+        .card .status { font-size: 0.8rem; color: var(--zna-gold); font-weight: bold; }
+
+        .prediction-tag { background: rgba(240, 98, 146, 0.15); color: var(--accent-pink); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; margin-top: 6px; display: inline-block; }
+
+        .pdf-btn { 
+            background: #ef4444; 
+            color: white; 
+            text-align: center; 
+            padding: 16px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            display: block; 
+            margin: 20px 0; 
+            font-weight: bold;
+        }
+
+        .extra-content { display: none; }
+
+        .show-more {
+            background: none;
+            border: 1px solid var(--zna-gold);
+            color: var(--zna-gold);
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-zna">ZNA</div>
+    <h1>دليل الثوابت والمرشحات</h1>
+    <p>بإشراف المبرمج Atter (@raslen_mods)</p>
+</header>
+
+<div class="nav-tabs">
+    <button class="tab-btn active" onclick="openTab(event, 'phy')">الفيزياء</button>
+    <button class="tab-btn" onclick="openTab(event, 'chem')">الكيمياء</button>
+    <button class="tab-btn" onclick="openTab(event, 'bio')">الأحياء</button>
+</div>
+
+<div class="container">
     
-    <div class="card">
-        <div>
-            <span class="title">نماذج البناء الذري (دالتون، ثومسن، رذرفورد)</span>
-            <div class="prediction-tag">ثابت وزاري: لماذا سمي نموذج رذرفورد بالكوكبي؟</div>
-        </div>
-        <span class="status">أهمية قصوى</span>
-    </div>
-
-    <div class="card">
-        <div>
-            <span class="title">كشوفات الفصل السادس والسابع</span>
-            <div class="prediction-tag">كشف غاز الأمونيا وكشف كلوريد الهيدروجين (أبخرة بيضاء)</div>
-        </div>
-        <span class="status">سؤال مضمون</span>
-    </div>
-
-    <div class="card">
-        <div>
-            <span class="title">تحضير غاز الميثان والأثيلين مختبرياً</span>
-            <div class="prediction-tag">ركز على رسم الجهاز والمعادلات الكيميائية</div>
-        </div>
-        <span class="status">ثابت 10د</span>
-    </div>
-
-    <div style="margin: 15px 0;">
-        <a href="رابط_ملف_المرشحات_هنا" target="_blank" class="pdf-link" style="background: #ef4444; text-decoration: none; display: block; text-align: center; padding: 15px; border-radius: 12px; color: white; font-weight: bold;">
-            📥 تحميل مرشحات الكيمياء كاملة (9 أوراق PDF)
-        </a>
-    </div>
-
-    <div id="chem-more" class="extra-cards" style="display:none;">
+    <div id="phy" class="subject-content active">
+        <div class="section-title">🔥 مرشحات الفيزياء (تحليل محمد هيثم)</div>
         
         <div class="card">
             <div>
-                <span class="title">تجربة النافورة (ذوبان الغاز)</span>
-                <div class="prediction-tag">سؤال: كيف تدلل على أن الغاز كثير الذوبان في الماء؟</div>
+                <span class="title">طرق شحن الأجسام بالكهربائية</span><br>
+                <span class="prediction-tag">شرح طريقة التماس (مهمة جداً)</span>
             </div>
-            <span class="status">مكرر</span>
+            <span class="status">ثابت</span>
         </div>
 
         <div class="card">
             <div>
-                <span class="title">الكلوريدات وتفاعلاتها</span>
-                <div class="prediction-tag">نشوء الأملاح من إزاحة الهيدروجين بواسطة الفلزات</div>
+                <span class="title">الكشاف الكهربائي</span><br>
+                <span class="prediction-tag">جهاز الكشف عن الشحنة ونوعها</span>
             </div>
-            <span class="status">مهم</span>
+            <span class="status">مضمون</span>
         </div>
 
         <div class="card">
             <div>
-                <span class="title">تعاريف: مبدأ أوفباو، قاعدة هوند، البروتون</span>
-                <div class="prediction-tag">تأتي غالباً في فرع التعاريف الشامل</div>
+                <span class="title">تجربة أورستد (الفصل 6)</span><br>
+                <span class="prediction-tag">ثابت وزاري في النشاطات</span>
             </div>
-            <span class="status">ثوابت</span>
+            <span class="status">أهمية قصوى</span>
         </div>
+
+        <a href="رابط_ملف_الفيزياء_هنا" class="pdf-btn">📥 تحميل مرشحات الفيزياء PDF</a>
+
+        <div id="phy-more" class="extra-content">
+            <div class="card">
+                <div>
+                    <span class="title">قانون كولوم (مسائل)</span><br>
+                    <span class="prediction-tag">تركيز على المسافات والشحنات</span>
+                </div>
+                <span class="status">10 درجات</span>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="title">نشاط الحث الكهرومغناطيسي</span><br>
+                    <span class="prediction-tag">توليد تيار محتث بدون بطارية</span>
+                </div>
+                <span class="status">مرشح</span>
+            </div>
+        </div>
+        <button class="show-more" onclick="toggleMore('phy-more', this)">إظهار المزيد من الفيزياء +</button>
     </div>
 
-    <button class="show-more-btn" onclick="toggleMore('chem-more', this)" style="width: 100%; padding: 10px; background: none; border: 1px solid var(--zna-gold); color: var(--zna-gold); border-radius: 8px; cursor: pointer; font-weight: bold;">
-        إظهار المزيد من المرشحات +
-    </button>
+    <div id="chem" class="subject-content">
+        <div class="section-title">🔥 مرشحات الكيمياء (9 أوراق)</div>
+        <div class="card">
+            <div>
+                <span class="title">نموذج رذرفورد الكوكبي</span><br>
+                <span class="prediction-tag">لماذا سمي بهذا الاسم؟</span>
+            </div>
+            <span class="status">ثابت</span>
+        </div>
+        <a href="رابط_ملف_الكيمياء_هنا" class="pdf-btn">📥 تحميل مرشحات الكيمياء PDF</a>
+        
+        <div id="chem-more" class="extra-content">
+            <div class="card">
+                <div>
+                    <span class="title">تجربة النافورة</span><br>
+                    <span class="prediction-tag">إثبات ذوبان الغاز</span>
+                </div>
+                <span class="status">مكرر</span>
+            </div>
+        </div>
+        <button class="show-more" onclick="toggleMore('chem-more', this)">إظهار المزيد من الكيمياء +</button>
+    </div>
+
 </div>
+
+<footer>
+    ZNA للوزاريات | تصميم Atter 2026
+</footer>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, content, tabs;
+        content = document.getElementsByClassName("subject-content");
+        for (i = 0; i < content.length; i++) content[i].style.display = "none";
+        tabs = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+
+    function toggleMore(id, btn) {
+        var element = document.getElementById(id);
+        if (element.style.display === "block") {
+            element.style.display = "none";
+            btn.innerText = "إظهار المزيد +";
+        } else {
+            element.style.display = "block";
+            btn.innerText = "إخفاء -";
+        }
+    }
+</script>
+
+</body>
+    </html>
+    
