@@ -1,110 +1,31 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ثوابت الثالث المتوسط | @raslen_mods</title>
-    <style>
-        :root { --main: #0f172a; --card: #1e293b; --accent: #38bdf8; --text: #f1f5f9; --gold: #fbbf24; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--main); color: var(--text); margin: 0; padding: 0; line-height: 1.6; }
-        header { background: linear-gradient(135deg, #0ea5e9, #2563eb); padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .nav-scroll { display: flex; overflow-x: auto; background: var(--card); sticky; top: 0; border-bottom: 2px solid var(--accent); white-space: nowrap; padding: 5px; z-index: 1000; }
-        .nav-btn { padding: 12px 20px; border: none; background: none; color: #94a3b8; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .nav-btn.active { color: var(--accent); border-bottom: 3px solid var(--accent); }
-        .container { max-width: 800px; margin: 20px auto; padding: 15px; }
-        .subject-box { display: none; animation: slideIn 0.4s ease-out; }
-        .subject-box.active { display: block; }
-        .stat-item { background: var(--card); border-radius: 12px; padding: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
-        .topic-title { font-size: 1rem; font-weight: 600; color: #bae6fd; }
-        .importance { background: rgba(56, 189, 248, 0.2); color: var(--accent); padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; border: 1px solid var(--accent); }
-        .pdf-link { display: block; background: #059669; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; margin-top: 20px; font-weight: bold; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.8rem; }
-    </style>
-</head>
-<body>
+<div id="phy" class="subject-box">
+    <div class="stat-item">
+        <div>
+            <span class="topic-title">ثوابت الفيزياء (تمهيدي 2025)</span><br>
+            <small style="color: #94a3b8;">شاهد الأسئلة والأجوبة النموذجية مباشرة:</small>
+            <div style="margin-top: 10px;">
+                <a href="https://mlazemna.com/tmcmall25/" target="_blank" 
+                   style="background: #ef4444; color: white; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; margin-right: 5px; display: inline-block;">
+                   📄 أسئلة التمهيدي 2025
+                </a>
+                <a href="https://mlazemna.com/tmcmall25/" target="_blank" 
+                   style="background: #10b981; color: white; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; display: inline-block;">
+                   ✅ الأجوبة النموذجية
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
 
-<header>
-    <h1>🎓 منصة الثوابت الوزارية</h1>
-    <p>دليلك الشامل للامتحانات - إعداد المبرمج Atter</p>
-</header>
-
-<div class="nav-scroll">
-    <button class="nav-btn active" onclick="tab(event, 'soc')">الاجتماعيات</button>
-    <button class="nav-btn" onclick="tab(event, 'phy')">الفيزياء</button>
-    <button class="nav-btn" onclick="tab(event, 'chem')">الكيمياء</button>
-    <button class="nav-btn" onclick="tab(event, 'bio')">الأحياء</button>
-    <button class="nav-btn" onclick="tab(event, 'math')">الرياضيات</button>
-    <button class="nav-btn" onclick="tab(event, 'ar')">العربي</button>
-    <button class="nav-btn" onclick="tab(event, 'en')">الأنجليزي</button>
+<div id="chem" class="subject-box">
+    <div class="stat-item">
+        <div>
+            <span class="topic-title">أسئلة الكيمياء (تمهيدي 2025)</span><br>
+            <div style="margin-top: 10px;">
+                <a href="https://mlazemna.com/tmcmall25/" target="_blank" style="background: #2563eb; color: white; padding: 8px 15px; border-radius: 6px; text-decoration: none; font-size: 0.9rem;">
+                   📥 فتح المصدر الرسمي (ملازمنا)
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div class="container">
-    
-    <div id="soc" class="subject-box active">
-        <div class="stat-item"><span class="topic-title">ثورة العشرين (أسبابها ونتائجها)</span><span class="importance">ثابت جداً</span></div>
-        <div class="stat-item"><span class="topic-title">المناخ والنبات الطبيعي</span><span class="importance">مكرر وزاري</span></div>
-        <div class="stat-item"><span class="topic-title">تعاريف: ميسون، الخلية، الموارد المائية</span><span class="importance">مهم</span></div>
-    </div>
-
-    <div id="phy" class="subject-box">
-        <div class="stat-item"><span class="topic-title">قانون كولوم (مسائل الفصل الأول)</span><span class="importance">سنوياً</span></div>
-        <div class="stat-item"><span class="topic-title">ربط المقاومات (توالي وتوازي)</span><span class="importance">ثابت</span></div>
-        <div class="stat-item"><span class="topic-title">قوانين المحولة الكهربائية (الفصل السابع)</span><span class="importance">مكرر جداً</span></div>
-    </div>
-
-    <div id="chem" class="subject-box">
-        <div class="stat-item"><span class="topic-title">الترتيب الإلكتروني (مبدأ أوفباو)</span><span class="importance">10 درجات</span></div>
-        <div class="stat-item"><span class="topic-title">كشوفات العناصر (الصوديوم، الألمنيوم)</span><span class="importance">ثابت</span></div>
-        <div class="stat-item"><span class="topic-title">تحضير الغازات مختبرياً وصناعياً</span><span class="importance">مهم</span></div>
-    </div>
-
-    <div id="bio" class="subject-box">
-        <div class="stat-item"><span class="topic-title">مقارنة (الشهيق والزفير / الشريان والوريد)</span><span class="importance">مكرر</span></div>
-        <div class="stat-item"><span class="topic-title">الرسومات (الزغابة، الخلية العصبية)</span><span class="importance">ثابت</span></div>
-        <div class="stat-item"><span class="topic-title">وظائف ومواقع الأعضاء</span><span class="importance">مهم جداً</span></div>
-    </div>
-
-    <div id="math" class="subject-box">
-        <div class="stat-item"><span class="topic-title">المتتابعات الحسابية</span><span class="importance">10 درجات</span></div>
-        <div class="stat-item"><span class="topic-title">طرق التحليل (التجربة، الفرق بين مربعين)</span><span class="importance">ثابت</span></div>
-        <div class="stat-item"><span class="topic-title">حل المعادلات بالقانون العام (الدستور)</span><span class="importance">مكرر</span></div>
-    </div>
-
-    <div id="ar" class="subject-box">
-        <div class="stat-item"><span class="topic-title">المصادر والأبواب</span><span class="importance">ثابت</span></div>
-        <div class="stat-item"><span class="topic-title">المشتقات (اسم الفاعل، مبالغة الصيغة)</span><span class="importance">مهم</span></div>
-        <div class="stat-item"><span class="topic-title">الأدب (شعراء العصور، حياة السياب)</span><span class="importance">مكرر</span></div>
-    </div>
-
-    <div id="en" class="subject-box">
-        <div class="stat-item"><span class="topic-title">الإخبار عن الوقت (Telling the time)</span><span class="importance">ثابت</span></div>
-        <div class="stat-item"><span class="topic-title">الوصف المؤدب (Polite description)</span><span class="importance">مكرر</span></div>
-        <div class="stat-item"><span class="topic-title">الإنشاءات (وصف صديق، دعوة)</span><span class="importance">15 درجة</span></div>
-    </div>
-
-    <a href="وزاريات_الثالث_المتوسط_المرتبة.pdf" class="pdf-link">
-        📥 تحميل ملف الأسئلة الشامل (PDF)
-    </a>
-
-</div>
-
-<footer>
-    تم التطوير بواسطة @raslen_mods <br>
-    مشروع خدمي لطلبة العراق 2026
-</footer>
-
-<script>
-    function tab(e, name) {
-        var i, x, b;
-        x = document.getElementsByClassName("subject-box");
-        for (i = 0; i < x.length; i++) x[i].style.display = "none";
-        b = document.getElementsByClassName("nav-btn");
-        for (i = 0; i < b.length; i++) b[i].className = b[i].className.replace(" active", "");
-        document.getElementById(name).style.display = "block";
-        e.currentTarget.className += " active";
-    }
-</script>
-
-</body>
-</html>
