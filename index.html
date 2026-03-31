@@ -3,71 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الثوابت الوزارية | @raslen_mods</title>
+    <title>ثوابت الثالث المتوسط | @raslen_mods</title>
     <style>
-        :root { --p: #1a1a2e; --s: #16213e; --a: #e94560; --t: #ffffff; }
-        body { font-family: 'Segoe UI', sans-serif; background: #0f0f1b; color: var(--t); margin: 0; text-align: center; }
-        header { background: var(--p); padding: 25px; border-bottom: 3px solid var(--a); }
-        .tabs { display: flex; overflow-x: auto; background: var(--s); sticky; top: 0; border-bottom: 1px solid #333; }
-        .tab-btn { flex: 0 0 auto; padding: 15px 20px; border: none; background: none; color: #aaa; cursor: pointer; font-size: 1rem; }
-        .tab-btn.active { color: var(--a); border-bottom: 3px solid var(--a); font-weight: bold; }
-        .container { max-width: 700px; margin: 20px auto; padding: 15px; }
-        .content { display: none; animation: fadeIn 0.4s; }
-        .content.active { display: block; }
-        .card { background: var(--s); border-radius: 10px; padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; border-right: 4px solid var(--a); }
-        .btn-pdf { display: block; background: #27ae60; color: white; padding: 15px; border-radius: 8px; text-decoration: none; margin-top: 20px; font-weight: bold; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        footer { padding: 20px; color: #555; font-size: 0.8rem; }
+        :root { --main: #0f172a; --card: #1e293b; --accent: #38bdf8; --text: #f1f5f9; --gold: #fbbf24; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--main); color: var(--text); margin: 0; padding: 0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #0ea5e9, #2563eb); padding: 30px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .nav-scroll { display: flex; overflow-x: auto; background: var(--card); sticky; top: 0; border-bottom: 2px solid var(--accent); white-space: nowrap; padding: 5px; z-index: 1000; }
+        .nav-btn { padding: 12px 20px; border: none; background: none; color: #94a3b8; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .nav-btn.active { color: var(--accent); border-bottom: 3px solid var(--accent); }
+        .container { max-width: 800px; margin: 20px auto; padding: 15px; }
+        .subject-box { display: none; animation: slideIn 0.4s ease-out; }
+        .subject-box.active { display: block; }
+        .stat-item { background: var(--card); border-radius: 12px; padding: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
+        .topic-title { font-size: 1rem; font-weight: 600; color: #bae6fd; }
+        .importance { background: rgba(56, 189, 248, 0.2); color: var(--accent); padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; border: 1px solid var(--accent); }
+        .pdf-link { display: block; background: #059669; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; margin-top: 20px; font-weight: bold; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>🎓 دليل الثوابت الوزارية</h1>
-    <p>إعداد المبرمج Atter (@raslen_mods)</p>
+    <h1>🎓 منصة الثوابت الوزارية</h1>
+    <p>دليلك الشامل للامتحانات - إعداد المبرمج Atter</p>
 </header>
 
-<div class="tabs">
-    <button class="tab-btn active" onclick="show(event, 'soc')">الاجتماعيات</button>
-    <button class="tab-btn" onclick="show(event, 'phy')">الفيزياء</button>
-    <button class="tab-btn" onclick="show(event, 'chem')">الكيمياء</button>
-    <button class="tab-btn" onclick="show(event, 'bio')">الأحياء</button>
-    <button class="tab-btn" onclick="show(event, 'math')">الرياضيات</button>
-    <button class="tab-btn" onclick="show(event, 'ar')">العربي</button>
-    <button class="tab-btn" onclick="show(event, 'en')">الأنجليزي</button>
+<div class="nav-scroll">
+    <button class="nav-btn active" onclick="tab(event, 'soc')">الاجتماعيات</button>
+    <button class="nav-btn" onclick="tab(event, 'phy')">الفيزياء</button>
+    <button class="nav-btn" onclick="tab(event, 'chem')">الكيمياء</button>
+    <button class="nav-btn" onclick="tab(event, 'bio')">الأحياء</button>
+    <button class="nav-btn" onclick="tab(event, 'math')">الرياضيات</button>
+    <button class="nav-btn" onclick="tab(event, 'ar')">العربي</button>
+    <button class="nav-btn" onclick="tab(event, 'en')">الأنجليزي</button>
 </div>
 
 <div class="container">
-    <div id="soc" class="content active">
-        <div class="card"><span>ثورة العشرين</span><b>مكرر جداً</b></div>
-        <div class="card"><span>عوامل قيام الصناعة</span><b>10 مرات</b></div>
-        <a href="وزاريات_الثالث_المتوسط_المرتبة.pdf" class="btn-pdf">📥 تحميل ملف الاجتماعيات PDF</a>
+    
+    <div id="soc" class="subject-box active">
+        <div class="stat-item"><span class="topic-title">ثورة العشرين (أسبابها ونتائجها)</span><span class="importance">ثابت جداً</span></div>
+        <div class="stat-item"><span class="topic-title">المناخ والنبات الطبيعي</span><span class="importance">مكرر وزاري</span></div>
+        <div class="stat-item"><span class="topic-title">تعاريف: ميسون، الخلية، الموارد المائية</span><span class="importance">مهم</span></div>
     </div>
 
-    <div id="phy" class="content">
-        <div class="card"><span>قانون كولوم</span><b>ثابت سنوياً</b></div>
-        <div class="card"><span>المحولة الكهربائية</span><b>مكرر</b></div>
-        <a href="وزاريات_الثالث_المتوسط_المرتبة.pdf" class="btn-pdf">📥 تحميل ملف الفيزياء PDF</a>
+    <div id="phy" class="subject-box">
+        <div class="stat-item"><span class="topic-title">قانون كولوم (مسائل الفصل الأول)</span><span class="importance">سنوياً</span></div>
+        <div class="stat-item"><span class="topic-title">ربط المقاومات (توالي وتوازي)</span><span class="importance">ثابت</span></div>
+        <div class="stat-item"><span class="topic-title">قوانين المحولة الكهربائية (الفصل السابع)</span><span class="importance">مكرر جداً</span></div>
     </div>
 
-    <div id="chem" class="content">
-        <div class="card"><span>الكشف عن الصوديوم</span><b>مهم جداً</b></div>
-        <a href="وزاريات_الثالث_المتوسط_المرتبة.pdf" class="btn-pdf">📥 تحميل ملف الكيمياء PDF</a>
+    <div id="chem" class="subject-box">
+        <div class="stat-item"><span class="topic-title">الترتيب الإلكتروني (مبدأ أوفباو)</span><span class="importance">10 درجات</span></div>
+        <div class="stat-item"><span class="topic-title">كشوفات العناصر (الصوديوم، الألمنيوم)</span><span class="importance">ثابت</span></div>
+        <div class="stat-item"><span class="topic-title">تحضير الغازات مختبرياً وصناعياً</span><span class="importance">مهم</span></div>
     </div>
+
+    <div id="bio" class="subject-box">
+        <div class="stat-item"><span class="topic-title">مقارنة (الشهيق والزفير / الشريان والوريد)</span><span class="importance">مكرر</span></div>
+        <div class="stat-item"><span class="topic-title">الرسومات (الزغابة، الخلية العصبية)</span><span class="importance">ثابت</span></div>
+        <div class="stat-item"><span class="topic-title">وظائف ومواقع الأعضاء</span><span class="importance">مهم جداً</span></div>
+    </div>
+
+    <div id="math" class="subject-box">
+        <div class="stat-item"><span class="topic-title">المتتابعات الحسابية</span><span class="importance">10 درجات</span></div>
+        <div class="stat-item"><span class="topic-title">طرق التحليل (التجربة، الفرق بين مربعين)</span><span class="importance">ثابت</span></div>
+        <div class="stat-item"><span class="topic-title">حل المعادلات بالقانون العام (الدستور)</span><span class="importance">مكرر</span></div>
+    </div>
+
+    <div id="ar" class="subject-box">
+        <div class="stat-item"><span class="topic-title">المصادر والأبواب</span><span class="importance">ثابت</span></div>
+        <div class="stat-item"><span class="topic-title">المشتقات (اسم الفاعل، مبالغة الصيغة)</span><span class="importance">مهم</span></div>
+        <div class="stat-item"><span class="topic-title">الأدب (شعراء العصور، حياة السياب)</span><span class="importance">مكرر</span></div>
+    </div>
+
+    <div id="en" class="subject-box">
+        <div class="stat-item"><span class="topic-title">الإخبار عن الوقت (Telling the time)</span><span class="importance">ثابت</span></div>
+        <div class="stat-item"><span class="topic-title">الوصف المؤدب (Polite description)</span><span class="importance">مكرر</span></div>
+        <div class="stat-item"><span class="topic-title">الإنشاءات (وصف صديق، دعوة)</span><span class="importance">15 درجة</span></div>
+    </div>
+
+    <a href="وزاريات_الثالث_المتوسط_المرتبة.pdf" class="pdf-link">
+        📥 تحميل ملف الأسئلة الشامل (PDF)
+    </a>
+
 </div>
 
-<footer>حقوق الطبع محفوظة 2026 - Atter Projects</footer>
+<footer>
+    تم التطوير بواسطة @raslen_mods <br>
+    مشروع خدمي لطلبة العراق 2026
+</footer>
 
 <script>
-    function show(e, name) {
-        var i, c, t;
-        c = document.getElementsByClassName("content");
-        for (i = 0; i < c.length; i++) c[i].style.display = "none";
-        t = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < t.length; i++) t[i].className = t[i].className.replace(" active", "");
+    function tab(e, name) {
+        var i, x, b;
+        x = document.getElementsByClassName("subject-box");
+        for (i = 0; i < x.length; i++) x[i].style.display = "none";
+        b = document.getElementsByClassName("nav-btn");
+        for (i = 0; i < b.length; i++) b[i].className = b[i].className.replace(" active", "");
         document.getElementById(name).style.display = "block";
         e.currentTarget.className += " active";
     }
 </script>
+
 </body>
 </html>
