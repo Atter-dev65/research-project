@@ -1,128 +1,64 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZNA للوزاريات | @raslen_mods</title>
-    <style>
-        :root { 
-            --bg: #0f172a; 
-            --header-bg: #1e293b;
-            --card-bg: #1e293b;
-            --zna-gold: #fbbf24;
-            --accent-pink: #f06292;
-            --text: #ffffff;
-            --sub-text: #94a3b8;
-        }
-
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
-        header { background: var(--header-bg); padding: 35px 20px; text-align: center; border-bottom: 4px solid var(--zna-gold); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        .logo-zna { font-size: 2.8rem; font-weight: 900; color: var(--zna-gold); letter-spacing: 2px; margin: 0; }
-        header h1 { font-size: 1.3rem; margin-top: 10px; }
-
-        .nav-tabs { display: flex; overflow-x: auto; background: #111827; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 100; scrollbar-width: none; }
-        .nav-tabs::-webkit-scrollbar { display: none; }
-        .tab-btn { padding: 15px 20px; border: none; background: none; color: var(--sub-text); cursor: pointer; font-weight: bold; white-space: nowrap; transition: 0.3s; }
-        .tab-btn.active { color: var(--zna-gold); border-bottom: 3px solid var(--zna-gold); background: rgba(251, 191, 36, 0.1); }
-
-        .container { max-width: 600px; margin: 20px auto; padding: 10px; }
-        .subject-content { display: none; animation: fadeIn 0.4s ease; }
-        .subject-content.active { display: block; }
-
-        .section-header { color: var(--zna-gold); margin: 25px 0 12px; font-size: 1.1rem; font-weight: bold; border-right: 4px solid var(--zna-gold); padding-right: 10px; }
-        
-        /* البطاقات بنمط السكرين الذي أرسلته */
-        .card { 
-            background: var(--card-bg); 
-            border-radius: 12px; 
-            padding: 20px; 
-            margin-bottom: 12px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            border-right: 5px solid var(--accent-pink);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .card .title { font-size: 0.95rem; font-weight: 600; color: #bae6fd; }
-        .card .status { font-size: 0.8rem; color: var(--zna-gold); font-weight: bold; }
-
-        .prediction-tag { background: rgba(240, 98, 146, 0.2); color: var(--accent-pink); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; margin-top: 5px; display: inline-block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.8rem; border-top: 1px solid #1e293b; }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="logo-zna">ZNA</div>
-    <h1>دليل المنهج والثوابت</h1>
-    <p>تحليل ذكي بواسطة Atter (@raslen_mods)</p>
-</header>
-
-<div class="nav-tabs">
-    <button class="tab-btn active" onclick="openTab(event, 'phy')">الفيزياء</button>
-    <button class="tab-btn" onclick="openTab(event, 'chem')">الكيمياء</button>
-    <button class="tab-btn" onclick="openTab(event, 'bio')">الأحياء</button>
-    <button class="tab-btn" onclick="openTab(event, 'math')">الرياضيات</button>
-    <button class="tab-btn" onclick="openTab(event, 'soc')">الاجتماعيات</button>
-</div>
-
-<div class="container">
+<div id="chem" class="subject-content active">
+    <div class="section-header">🔥 مرشحات الكيمياء (تحليل الملف الوزاري)</div>
     
-    <div id="phy" class="subject-content active">
-        <div class="section-header">📌 تحليل الكتاب (ثوابت مؤكدة)</div>
-        <div class="card"><div><span class="title">قانون كولوم (الفصل 1)</span><br><span class="prediction-tag">تخمين: مسألة ثابتة 10د</span></div><span class="status">ثابت</span></div>
-        <div class="card"><div><span class="title">المقاومات والتوازي (الفصل 3)</span><br><span class="prediction-tag">تخمين: سؤال عن التيار الكلي</span></div><span class="status">مكرر</span></div>
-        <div class="card"><div><span class="title">نشاط الحث الكهرومغناطيسي</span><br><span class="prediction-tag">تخمين: مرشح بقوة للدور القادم</span></div><span class="status">مرشح</span></div>
+    <div class="card">
+        <div>
+            <span class="title">نماذج البناء الذري (دالتون، ثومسن، رذرفورد)</span>
+            <div class="prediction-tag">ثابت وزاري: لماذا سمي نموذج رذرفورد بالكوكبي؟</div>
+        </div>
+        <span class="status">أهمية قصوى</span>
     </div>
 
-    <div id="chem" class="subject-content">
-        <div class="section-header">🧪 بين الأسطر (توقعات ZNA)</div>
-        <div class="card"><div><span class="title">مبدأ أوفباو وقاعدة هوند</span><br><span class="prediction-tag">تخمين: سؤال الزمرة والدورة</span></div><span class="status">ثابت 100%</span></div>
-        <div class="card"><div><span class="title">كشف الألمنيوم (طريقة الكتاب)</span><br><span class="prediction-tag">تخمين: سؤال المعادلات اللفظية</span></div><span class="status">ثابت</span></div>
-        <div class="card"><div><span class="title">الاستيلين (التحضير المختبري)</span><br><span class="prediction-tag">تخمين: رسم الجهاز ثابت</span></div><span class="status">مرشح</span></div>
+    <div class="card">
+        <div>
+            <span class="title">كشوفات الفصل السادس والسابع</span>
+            <div class="prediction-tag">كشف غاز الأمونيا وكشف كلوريد الهيدروجين (أبخرة بيضاء)</div>
+        </div>
+        <span class="status">سؤال مضمون</span>
     </div>
 
-    <div id="bio" class="subject-content">
-        <div class="section-header">🔬 الرسومات المنهجية المهمة</div>
-        <div class="card"><div><span class="title">زغابة الأمعاء (الفصل 4)</span><br><span class="prediction-tag">تخمين: أكثر رسمة مكررة</span></div><span class="status">ثابت</span></div>
-        <div class="card"><div><span class="title">مقارنة الشرايين والأوردة</span><br><span class="prediction-tag">تخمين: جدول المقارنة ثابت</span></div><span class="status">مكرر</span></div>
-        <div class="card"><div><span class="title">وظائف الكبد والغدد الملحقة</span><br><span class="prediction-tag">تخمين: سؤال "ما وظيفة"</span></div><span class="status">مرشح</span></div>
+    <div class="card">
+        <div>
+            <span class="title">تحضير غاز الميثان والأثيلين مختبرياً</span>
+            <div class="prediction-tag">ركز على رسم الجهاز والمعادلات الكيميائية</div>
+        </div>
+        <span class="status">ثابت 10د</span>
     </div>
 
-    <div id="math" class="subject-content">
-        <div class="section-header">📐 خلاصة المسائل الوزارية</div>
-        <div class="card"><div><span class="title">المتتابعة الحسابية</span><br><span class="prediction-tag">تخمين: الحد العام ثابت 10د</span></div><span class="status">ثابت</span></div>
-        <div class="card"><div><span class="title">المقدار المميز (الدستور)</span><br><span class="prediction-tag">تخمين: تحديد جذري المعادلة</span></div><span class="status">ثابت</span></div>
-        <div class="card"><div><span class="title">تبسيط المقادير الجبرية</span><br><span class="prediction-tag">تخمين: الضرب والقسمة</span></div><span class="status">مكرر</span></div>
+    <div style="margin: 15px 0;">
+        <a href="رابط_ملف_المرشحات_هنا" target="_blank" class="pdf-link" style="background: #ef4444; text-decoration: none; display: block; text-align: center; padding: 15px; border-radius: 12px; color: white; font-weight: bold;">
+            📥 تحميل مرشحات الكيمياء كاملة (9 أوراق PDF)
+        </a>
     </div>
 
-    <div id="soc" class="subject-content">
-        <div class="section-header">🇮🇶 ثوابت الكتاب المنهجي</div>
-        <div class="card"><div><span class="title">ثورة العشرين (تاريخ العراق)</span><br><span class="prediction-tag">تخمين: سؤال النتائج والأسباب</span></div><span class="status">ثابت</span></div>
-        <div class="card"><div><span class="title">تعاريف: محمود الحفيد، مدحت باشا</span><br><span class="prediction-tag">تخمين: الشخصيات المهمة</span></div><span class="status">مكرر</span></div>
-        <div class="card"><div><span class="title">المناخ والنبات الطبيعي</span><br><span class="prediction-tag">تخمين: عوامل توزيع السكان</span></div><span class="status">مرشح</span></div>
+    <div id="chem-more" class="extra-cards" style="display:none;">
+        
+        <div class="card">
+            <div>
+                <span class="title">تجربة النافورة (ذوبان الغاز)</span>
+                <div class="prediction-tag">سؤال: كيف تدلل على أن الغاز كثير الذوبان في الماء؟</div>
+            </div>
+            <span class="status">مكرر</span>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="title">الكلوريدات وتفاعلاتها</span>
+                <div class="prediction-tag">نشوء الأملاح من إزاحة الهيدروجين بواسطة الفلزات</div>
+            </div>
+            <span class="status">مهم</span>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="title">تعاريف: مبدأ أوفباو، قاعدة هوند، البروتون</span>
+                <div class="prediction-tag">تأتي غالباً في فرع التعاريف الشامل</div>
+            </div>
+            <span class="status">ثوابت</span>
+        </div>
     </div>
 
+    <button class="show-more-btn" onclick="toggleMore('chem-more', this)" style="width: 100%; padding: 10px; background: none; border: 1px solid var(--zna-gold); color: var(--zna-gold); border-radius: 8px; cursor: pointer; font-weight: bold;">
+        إظهار المزيد من المرشحات +
+    </button>
 </div>
-
-<footer>
-    ZNA للوزاريات | تحليل كتب المنهج 2026 <br>
-    تطوير المبرمج Atter (@raslen_mods)
-</footer>
-
-<script>
-    function openTab(evt, tabName) {
-        var i, content, tabs;
-        content = document.getElementsByClassName("subject-content");
-        for (i = 0; i < content.length; i++) content[i].style.display = "none";
-        tabs = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.classList.add("active");
-    }
-</script>
-
-</body>
-</html>
